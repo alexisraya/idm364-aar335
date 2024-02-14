@@ -1,12 +1,18 @@
 <script>
+	import { getCartCount } from "../stores/cartStore";
+
     let screenWidth;
     let smallThird = 40;
     let bigThird = 40;
+    let cartCount = 0;
 
     $: {
+        // TODO: make this dynamic
         screenWidth = 800; // recieving window is not defined
         smallThird = (screenWidth - 200)/3;
         bigThird = screenWidth - (smallThird*2);
+
+        cartCount = getCartCount();
     }
 
 </script>
@@ -17,7 +23,7 @@
         <a href="/">CULT STICKERS</a>
     </div>
     <div class="button cart" style="width: {smallThird}px">
-        <a href="/cart">SHOPPING CART (0)</a>
+        <a href="/cart">SHOPPING CART ({cartCount})</a>
     </div>
 </nav>
 

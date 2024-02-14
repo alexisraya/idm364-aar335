@@ -7,3 +7,15 @@ declare namespace App {
 	// interface PageData {}
 	// interface Platform {}
 }
+
+
+declare class Product {
+	id: string    // Stripe ID
+	name: string  // "Funny Sticker"
+	price: number // 5
+}
+
+declare class CartItem {
+	id: string
+	quantity: number
+}
