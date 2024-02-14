@@ -11,7 +11,6 @@
         screenWidth = 800; // recieving window is not defined
         smallThird = (screenWidth - 200)/3;
         bigThird = screenWidth - (smallThird*2);
-
         cartCount = getCartCount();
     }
 
@@ -20,7 +19,7 @@
 <nav>
     <button class="button menu" style="width: {smallThird}px">MENU</button>
     <div class="button title" style="width: {bigThird}px">
-        <a href="/">CULT STICKERS</a>
+        <a href="/">STICKERBOOK</a>
     </div>
     <div class="button cart" style="width: {smallThird}px">
         <a href="/cart">SHOPPING CART ({cartCount})</a>
@@ -44,7 +43,7 @@
         display: flex;
         flex-direction: row;
         justify-content: space-between;
-        margin: 60px;
+        margin-bottom: 60px;
     }
 
     .button{

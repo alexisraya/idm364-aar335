@@ -1,12 +1,18 @@
 <script lang="ts">
+	import { addToCart } from "../stores/cartStore";
+
     export let image: any;
-    export let name: String;
+    export let name: string;
     export let price: Number;
 
     let visible = true;
 
-    const hide = () => {
+    const onClose = () => {
         visible = false;
+    }
+
+    const addCart = () => {
+        addToCart(name);
     }
 </script>
 
@@ -19,9 +25,9 @@
             <h1 class="title">{name}</h1>
             <h2 class="price">${price}</h2>
             <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget sit amet tellus cras adipiscing enim eu. Egestas sed tempus urna et pharetra pharetra massa.</p>
-            <button class="add-to-cart-button">Add to Cart</button>
+            <button class="add-to-cart-button" on:click={addCart}>Add to Cart</button>
         </div>
-        <button on:click={hide} class="close-button">X</button>
+        <button on:click={onClose} class="close-button">X</button>
     </div>
 {/if}
 
@@ -49,6 +55,11 @@
         background-color: white;
         border: solid 1px black;
         box-shadow: 2px 2px black;
+        cursor: pointer
+    }
+
+    .add-to-cart-button:active{
+        box-shadow: none;
     }
 
     .close-button{
@@ -57,5 +68,6 @@
         background-color: white;
         border: solid 1px black;
         box-shadow: 2px 2px black;
+        cursor: pointer;
     }
 </style>

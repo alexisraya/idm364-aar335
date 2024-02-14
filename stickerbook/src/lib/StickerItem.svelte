@@ -2,7 +2,7 @@
 	import StickerItemCard from "./StickerItemCard.svelte";
 
     export let image: any;
-    export let name: String;
+    export let name: string;
     export let price: Number;
 
     let isCardOpen = false;

@@ -15,7 +15,7 @@
 
     .body{
         margin: 60px;
-        padding: 30px;
+        padding: 60px 30px;
         background: #E6E4E2;
         border: solid 2px #818180;
     }
