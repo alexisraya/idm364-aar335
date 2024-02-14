@@ -1,10 +1,18 @@
 <script lang="ts">
+	import StickerItemCard from "./StickerItemCard.svelte";
+
     export let image: any;
     export let name: String;
     export let price: Number;
+
+    let isCardOpen = false;
+
+    const handleClick = () => {
+        isCardOpen = !isCardOpen;
+    }
 </script>
 
-<div class="item-container">
+<div class="item-container" on:click={handleClick} on:keydown={handleClick}>
     <div class="image-container">
        <img class="image" src={image} alt="sticker"/> 
     </div>
@@ -13,6 +21,10 @@
         <p class="price text">${price}</p>
     </div>
 </div>
+
+{#if isCardOpen}
+    <StickerItemCard name={name} image={image} price={price} />
+{/if}
 
 <style>
     .item-container{

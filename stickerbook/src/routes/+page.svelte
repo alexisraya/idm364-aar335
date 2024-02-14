@@ -1,6 +1,6 @@
 <script>
     import StickerItem from '$lib/StickerItem.svelte';
-import { stickers } from '../stickers/stickers'
+    import { stickers } from '../stickers/stickers'
 
     const items = stickers;
 </script>

@@ -14,7 +14,8 @@
     }
 
     .body{
-        margin: 30px 60px;
+        margin: 60px;
+        padding: 30px;
         background: #E6E4E2;
         border: solid 2px #818180;
     }
