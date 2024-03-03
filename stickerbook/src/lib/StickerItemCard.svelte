@@ -1,9 +1,10 @@
 <script lang="ts">
-	import { addToCart } from "../stores/cartStore";
+	import { addToCart, getCartCount } from "../stores/cartStore";
 
     export let image: any;
     export let name: string;
     export let price: Number;
+    export let description: string;
 
     let visible = true;
 
@@ -24,7 +25,7 @@
         <div class="product-info">
             <h1 class="title">{name}</h1>
             <h2 class="price">${price}</h2>
-            <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget sit amet tellus cras adipiscing enim eu. Egestas sed tempus urna et pharetra pharetra massa.</p>
+            <p class="description">{description}</p>
             <button class="add-to-cart-button" on:click={addCart}>Add to Cart</button>
         </div>
         <button on:click={onClose} class="close-button">X</button>
@@ -48,6 +49,7 @@
     .sticker{
         border: solid 3px white;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
+        width: 400px;
     }
 
     .add-to-cart-button{
@@ -64,7 +66,7 @@
 
     .close-button{
         position: relative;
-        top: -115px;
+        top: -225px;
         background-color: white;
         border: solid 1px black;
         box-shadow: 2px 2px black;

@@ -4,6 +4,7 @@
     export let image: any;
     export let name: string;
     export let price: Number;
+    export let description: string;
 
     let isCardOpen = false;
 
@@ -23,7 +24,7 @@
 </div>
 
 {#if isCardOpen}
-    <StickerItemCard name={name} image={image} price={price} />
+    <StickerItemCard name={name} image={image} price={price} description={description}/>
 {/if}
 
 <style>
@@ -40,8 +41,11 @@
     }
 
     .image{
+        background-color: darkgray;
         border: solid 3px white;
         box-shadow: 0px 0px 5px 1px rgba(0, 0, 0, 0.7);
+        width: 175px;
+        padding: 15px;
     }
 
     .text{

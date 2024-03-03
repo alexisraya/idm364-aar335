@@ -4,14 +4,13 @@
     let screenWidth;
     let smallThird = 40;
     let bigThird = 40;
-    let cartCount = 0;
+    $: cartCount = getCartCount(); //TODO bug not dynamically updating
 
     $: {
         // TODO: make this dynamic
         screenWidth = 800; // recieving window is not defined
         smallThird = (screenWidth - 200)/3;
         bigThird = screenWidth - (smallThird*2);
-        cartCount = getCartCount();
     }
 
 </script>

@@ -1,13 +1,23 @@
 <script>
     import StickerItem from '$lib/StickerItem.svelte';
-    import { stickers } from '../stickers/stickers'
+	import { onMount } from 'svelte';
+    
+    /**
+	 * @type {any[]}
+	 */
+    let sticker_items = [];
 
-    const items = stickers;
+    onMount(async () => {
+        const response = await fetch('/api');
+        const items = await response.json();
+        sticker_items = items.stickers;
+    });
+
 </script>
 
 <div class="stickers-container">
-    {#each items as {name, price, image}}
-        <StickerItem name={name} price={price} image={image} />
+    {#each sticker_items as {item_name, item_price, image_source, item_description}}
+        <StickerItem name={item_name} price={item_price} image={image_source} description={item_description}/>
     {/each}
 </div>
 
