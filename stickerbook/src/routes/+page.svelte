@@ -24,8 +24,25 @@
 <style>
     .stickers-container{
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: repeat(4, 1fr);
         column-gap: 60px;
         row-gap: 30px;
+    }
+
+    /* Responsiveness */
+    @media screen and (max-width: 1220px) {
+        .stickers-container{
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    @media screen and (max-width: 950px) {
+        .stickers-container{
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+    @media screen and (max-width: 675px) {
+        .stickers-container{
+            grid-template-columns: repeat(1, 1fr);
+        }
     }
 </style>

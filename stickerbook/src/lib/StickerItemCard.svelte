@@ -44,6 +44,7 @@
         background-color: #FAF7F5;
         padding: 30px;
         border: solid 3px black;
+        width: 75vw;
     }
 
     .sticker{
@@ -71,5 +72,26 @@
         border: solid 1px black;
         box-shadow: 2px 2px black;
         cursor: pointer;
+    }
+
+    /* Responsiveness */
+    @media screen and (max-width: 1220px) {
+        .sticker{
+            width: auto;
+            max-height: 250px;
+        }
+    }
+    @media screen and (max-width: 950px) {
+        .sticker{
+            width: auto;
+            max-height: 150px;
+        }
+        .product-card{
+            flex-direction: column;
+            width: 85vw;
+        }
+        .image-container{
+            align-self: flex-start;
+        }
     }
 </style>

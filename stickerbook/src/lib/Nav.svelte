@@ -16,7 +16,7 @@
 </script>
 
 <nav>
-    <button class="button menu" style="width: {smallThird}px">MENU</button>
+    <!-- <button class="button menu" style="width: {smallThird}px">MENU</button> -->
     <div class="button title" style="width: {bigThird}px">
         <a href="/">STICKERBOOK</a>
     </div>
