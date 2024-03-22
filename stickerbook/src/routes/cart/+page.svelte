@@ -1,6 +1,7 @@
 <script lang="ts">
 	import CartCard from "$lib/CartCard.svelte";
 	import ConfirmationModal from "$lib/ConfirmationModal.svelte";
+	import { fade } from "svelte/transition";
     import { cartTotal, cartStore, emptyCart } from "../../stores/cartStore";
     import Icon from "@iconify/svelte";
 
@@ -10,20 +11,25 @@
     });
 
     let isConfirmShowing = false;
+    let flag = true;
 
     const checkout = () => {
         isConfirmShowing = true;
+        flag = false;
         emptyCart();
         setTimeout(()=>{
             isConfirmShowing = false;
         }, 5000);
+        setTimeout(()=>{
+            flag = true;
+        }, 5500)
     }
 </script>
 
 {#if $cartTotal < 1}
     {#if isConfirmShowing}
     <ConfirmationModal />
-    {:else}
+    {:else if flag}
     <div class="empty-label-container">
         <Icon icon="fa6-solid:face-sad-tear" style="font-size: 100px;"/>
         <h1 class="empty-label">Your Stickerbook Cart is Empty</h1>
