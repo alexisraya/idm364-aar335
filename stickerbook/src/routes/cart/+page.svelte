@@ -19,10 +19,10 @@
         emptyCart();
         setTimeout(()=>{
             isConfirmShowing = false;
-        }, 5000);
+        }, 3000);
         setTimeout(()=>{
             flag = true;
-        }, 5500)
+        }, 3500)
     }
 </script>
 
