@@ -6,6 +6,12 @@
 
 <script>
     import Nav from "$lib/Nav.svelte";
+	import { onMount } from "svelte";
+	import { updateStores } from "../helpers/helperFunctions";
+    
+    onMount(() => {
+        updateStores();
+    })
 </script>
 
 <div class="body">

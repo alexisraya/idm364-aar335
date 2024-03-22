@@ -1,17 +1,31 @@
 <script lang="ts">
 	import CartCard from "$lib/CartCard.svelte";
 	import ConfirmationModal from "$lib/ConfirmationModal.svelte";
-	import { fade } from "svelte/transition";
-    import { cartTotal, cartStore, emptyCart } from "../../stores/cartStore";
+    import { cartTotal, cartStore, emptyCart, updateCartStore } from "../../stores/cartStore";
     import Icon from "@iconify/svelte";
+	import { afterUpdate, beforeUpdate, onMount } from "svelte";
+
+    let isConfirmShowing = false;
+    let flag = true;
 
     let cart: CartItem[] = [];
     cartStore.subscribe(result => {
         cart = result
     });
 
-    let isConfirmShowing = false;
-    let flag = true;
+    onMount(() => {
+        updateCartStore();
+        cartStore.subscribe(result => {
+            cart = result
+        });
+    })
+
+    afterUpdate(() => {
+        updateCartStore();
+        cartStore.subscribe(result => {
+            cart = result
+        });
+    })
 
     const checkout = () => {
         isConfirmShowing = true;
@@ -93,7 +107,7 @@
         width: 100px;
     }
 
-    .button:active{
+    .checkout-button:active{
         box-shadow: none;
     }
 </style>
