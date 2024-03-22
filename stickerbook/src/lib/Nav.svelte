@@ -37,6 +37,7 @@
         padding: 0;
         margin: 0;
         text-decoration: none;
+        font-size: 1.25rem;
     }
 
     a:visited {
