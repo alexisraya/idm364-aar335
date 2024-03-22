@@ -26,7 +26,6 @@
     }
     const deleteItem = () => {
         deleteFromCart(item.id);
-        location.reload();
     }
 </script>
 

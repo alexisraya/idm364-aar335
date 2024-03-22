@@ -52,7 +52,7 @@
 {:else}
 <h1 class="cart-title">Your Stickerbook Cart</h1>
 <div class="card-container">
-    {#each cart as item}
+    {#each $cartStore as item (item.id)}
         <CartCard id={item.id} />
         <hr style="width:50%;text-align:center;">
     {/each}
