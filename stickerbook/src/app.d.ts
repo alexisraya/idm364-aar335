@@ -18,4 +18,6 @@ declare class Product {
 declare class CartItem {
 	id: string
 	quantity: number
+	price: number
+	image: string
 }

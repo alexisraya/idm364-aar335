@@ -3,17 +3,21 @@
 
     export let image: any;
     export let name: string;
-    export let price: Number;
+    export let price: number;
     export let description: string;
 
     let isCardOpen = false;
 
-    const handleClick = () => {
-        isCardOpen = !isCardOpen;
+    function openModal() {
+        isCardOpen = true;
+    }
+
+    function closeModal() {
+        isCardOpen = false;
     }
 </script>
 
-<div class="item-container" on:click={handleClick} on:keydown={handleClick}>
+<div class="item-container" on:click={openModal} on:keydown={openModal}>
     <div class="image-container">
        <img class="image" src={image} alt="sticker"/> 
     </div>
@@ -24,7 +28,7 @@
 </div>
 
 {#if isCardOpen}
-    <StickerItemCard name={name} image={image} price={price} description={description}/>
+    <StickerItemCard name={name} image={image} price={price} description={description} onClose={closeModal}/>
 {/if}
 
 <style>

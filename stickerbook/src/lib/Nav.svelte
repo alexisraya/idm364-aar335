@@ -1,27 +1,33 @@
 <script>
-	import { getCartCount } from "../stores/cartStore";
+	import { goto } from "$app/navigation";
+	import { cartCount } from "../stores/cartStore";
 
     let screenWidth;
     let smallThird = 40;
     let bigThird = 40;
-    $: cartCount = getCartCount(); //TODO bug not dynamically updating
 
     $: {
-        // TODO: make this dynamic
-        screenWidth = 800; // recieving window is not defined
+        screenWidth = 800;
         smallThird = (screenWidth - 200)/3;
         bigThird = screenWidth - (smallThird*2);
+    }
+
+    const goHome = () => {
+        goto("/");
+    }
+    const goCart = () => {
+        goto("/cart");
     }
 
 </script>
 
 <nav>
     <!-- <button class="button menu" style="width: {smallThird}px">MENU</button> -->
-    <div class="button title" style="width: {bigThird}px">
+    <div class="button title" style="width: {bigThird}px" on:click={goHome} on:keydown={goHome}>
         <a href="/">STICKERBOOK</a>
     </div>
-    <div class="button cart" style="width: {smallThird}px">
-        <a href="/cart">SHOPPING CART ({cartCount})</a>
+    <div class="button cart" style="width: {smallThird}px" on:click={goCart} on:keydown={goCart}>
+        <a href="/cart">SHOPPING CART ({$cartCount})</a>
     </div>
 </nav>
 

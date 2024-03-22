@@ -1,19 +1,23 @@
 <script lang="ts">
-	import { addToCart, getCartCount } from "../stores/cartStore";
+	import { addToCart } from "../stores/cartStore";
 
     export let image: any;
     export let name: string;
-    export let price: Number;
+    export let price: number;
     export let description: string;
+    export let onClose: any;
 
     let visible = true;
 
-    const onClose = () => {
-        visible = false;
+    function closeModal() {
+        onClose();
     }
 
     const addCart = () => {
-        addToCart(name);
+        const object = {
+            id: name, image, price
+        }
+        addToCart(object);
     }
 </script>
 
@@ -28,7 +32,7 @@
             <p class="description">{description}</p>
             <button class="add-to-cart-button" on:click={addCart}>Add to Cart</button>
         </div>
-        <button on:click={onClose} class="close-button">X</button>
+        <button on:click={closeModal} class="close-button">X</button>
     </div>
 {/if}
 
