@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { addToCart } from "../stores/cartStore";
+	import Toast from "./Toast.svelte";
 
     export let image: any;
     export let name: string;
@@ -8,6 +9,7 @@
     export let onClose: any;
 
     let visible = true;
+    let isToastVisible = false
 
     function closeModal() {
         onClose();
@@ -18,6 +20,10 @@
             id: name, image, price
         }
         addToCart(object);
+        isToastVisible = true
+        setTimeout(()=>{
+            isToastVisible = false;
+        }, 3000);
     }
 </script>
 
@@ -30,7 +36,13 @@
             <h1 class="title">{name}</h1>
             <h2 class="price">${price}</h2>
             <p class="description">{description}</p>
-            <button class="add-to-cart-button" on:click={addCart}>Add to Cart</button>
+            <div class="button-container">
+                <button class="add-to-cart-button" on:click={addCart}>Add to Cart</button>
+                {#if isToastVisible}
+                <Toast toastName={name} />
+                {/if}
+            </div>
+            
         </div>
         <button on:click={closeModal} class="close-button">X</button>
     </div>
@@ -49,6 +61,7 @@
         padding: 30px;
         border: solid 3px black;
         width: 75vw;
+        z-index: 1000;
     }
 
     .sticker{
@@ -70,12 +83,22 @@
     }
 
     .close-button{
-        position: relative;
-        top: -225px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
         background-color: white;
         border: solid 1px black;
         box-shadow: 2px 2px black;
         cursor: pointer;
+    }
+
+    .button-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        column-gap: 25px;
+        max-width: 500px;
+        height: 50px;
     }
 
     /* Responsiveness */

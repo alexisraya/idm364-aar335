@@ -1,11 +1,10 @@
 <script>
 	import { addToCart, deleteFromCart, getItem, removeFromCart } from "../stores/cartStore";
-    import trashCan from "$lib/assets/trashCan.svg"
+    import Icon from '@iconify/svelte';
 
     export let id;
     const item = getItem(id);
     let quantity = item.quantity;
-    const trashIcon = trashCan;
 
     const increaseItem = () => {
         addToCart(item);
@@ -23,7 +22,7 @@
 <div class="container">
     {#if quantity == 1}
     <button class="button minus" on:click={deleteItem}>
-        <img src={trashIcon} alt="trash"/>
+        <Icon icon="ph:trash" />
     </button>
     {:else}
     <button class="button minus" on:click={decreaseItem}>-</button>

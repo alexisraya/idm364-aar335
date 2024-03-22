@@ -1,16 +1,25 @@
 <script lang="ts">
 	import CartCard from "$lib/CartCard.svelte";
-    import { getCartStore, cartTotal } from "../../stores/cartStore";
+    import { cartTotal, cartStore, emptyCart } from "../../stores/cartStore";
+    import Icon from "@iconify/svelte";
 
-    let cart = getCartStore();
+    let cart: CartItem[] = [];
+    cartStore.subscribe(result => {
+        cart = result
+    });
 
-    $: {
-        cart = getCartStore();
+    const checkout = () => {
+        emptyCart();
     }
-
 </script>
 
-<h1>Your Stickerbook</h1>
+{#if $cartTotal < 1}
+    <div class="empty-label-container">
+        <Icon icon="fa6-solid:face-sad-tear" style="font-size: 100px;"/>
+        <h1 class="empty-label">Your Stickerbook Cart is Empty</h1>
+    </div>
+{:else}
+<h1 class="cart-title">Your Stickerbook Cart</h1>
 <div class="card-container">
     {#each cart as item}
         <CartCard id={item.id} />
@@ -18,11 +27,25 @@
     {/each}
     <div class="checkout-container">
         <h1>Total: ${$cartTotal}</h1>
-        <button class="checkout-button">Checkout</button>
+        <button on:click={checkout} class="checkout-button">Checkout</button>
     </div>
 </div>
+{/if}
 
 <style>
+    .empty-label-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 45vh;
+    }
+    .empty-label{
+        text-align: center;
+    }
+    .cart-title{
+        text-align: center;
+    }
     .card-container{
         display: flex;
         flex-direction: column;

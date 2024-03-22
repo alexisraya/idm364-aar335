@@ -5,14 +5,6 @@ export const cartStore = writable<CartItem[]>([]);
 export const cartCount = writable(0);
 export const cartTotal = writable(0);
 
-export const getCartStore = () => {
-    let arr: CartItem[] = [];
-    cartStore.subscribe(result => {
-        arr = result
-    })
-    return arr;
-}
-
 export const getCartCount = () => {
     let count = 0;
     const items = get(cartStore);
@@ -86,3 +78,8 @@ export const getItem = (id: string) => {
     return (items[index])
 }
 
+export const emptyCart = () => {
+    cartStore.set([]);
+    cartCount.set(0);
+    cartTotal.set(0);
+}
